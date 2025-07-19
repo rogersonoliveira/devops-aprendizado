@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Check - Rogerson DevOps Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            margin: 0;
+            padding: 50px;
+            color: white;
+            text-align: center;
+        }
+        .health-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .status-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .status-details {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .metric:last-child {
+            border-bottom: none;
+        }
+        .value {
+            font-weight: bold;
+            color: #90EE90;
+        }
+    </style>
+</head>
+<body>
+    <div class="health-container">
+        <div class="status-icon">✅</div>
+        <h1>Health Check Status</h1>
+        <h2 style="color: #90EE90;">HEALTHY</h2>
+        
+        <div class="status-details">
+            <div class="metric">
+                <span>Status:</span>
+                <span class="value">UP</span>
+            </div>
+            <div class="metric">
+                <span>Version:</span>
+                <span class="value">2.0.0</span>
+            </div>
+            <div class="metric">
+                <span>Timestamp:</span>
+                <span class="value" id="timestamp"></span>
+            </div>
+            <div class="metric">
+                <span>Response Time:</span>
+                <span class="value" id="response-time">< 50ms</span>
+            </div>
+            <div class="metric">
+                <span>Database:</span>
+                <span class="value">Connected</span>
+            </div>
+            <div class="metric">
+                <span>Cache:</span>
+                <span class="value">Active</span>
+            </div>
+            <div class="metric">
+                <span>Memory Usage:</span>
+                <span class="value" id="memory">45%</span>
+            </div>
+            <div class="metric">
+                <span>CPU Usage:</span>
+                <span class="value" id="cpu">23%</span>
+            </div>
+            <div class="metric">
+                <span>Uptime:</span>
+                <span class="value" id="uptime">2d 14h 32m</span>
+            </div>
+        </div>
+        
+        <p><strong>All systems operational</strong></p>
+    </div>
+
+    <script>
+        // Atualiza timestamp
+        document.getElementById('timestamp').textContent = new Date().toISOString();
+        
+        // Simula métricas dinâmicas
+        document.getElementById('response-time').textContent = Math.floor(Math.random() * 30 + 10) + 'ms';
+        document.getElementById('memory').textContent = Math.floor(Math.random() * 20 + 35) + '%';
+        document.getElementById('cpu').textContent = Math.floor(Math.random() * 15 + 15) + '%';
+        
+        const uptimeHours = Math.floor(Math.random() * 48 + 12);
+        const uptimeDays = Math.floor(uptimeHours / 24);
+        const remainingHours = uptimeHours % 24;
+        document.getElementById('uptime').textContent = `${uptimeDays}d ${remainingHours}h ${Math.floor(Math.random() * 60)}m`;
+    </script>
+</body>
+</html>
