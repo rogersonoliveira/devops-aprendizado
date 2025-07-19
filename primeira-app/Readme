@@ -1,0 +1,8 @@
+
+
+
+# Construir a imagem
+docker build -t minha-primeira-app .
+
+# Executar o container
+docker run -d -p 8080:80 minha-primeira-app
